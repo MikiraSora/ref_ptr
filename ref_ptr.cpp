@@ -125,29 +125,3 @@ class Data{
 };
 
 
-template<typename T>
-void func(ref_ptr<T> t){
-				printf("\nenter func()");
-			 
-			 t=new int(45);
-				printf("\nvalue is %d\n",**t);	
-				t.dump_info();
-				
-				printf("\nleave func()\n");
-}
-
-int main(){
-				DEBUG_SETDUMPLEVEL(3);
-				ref_ptr<Data> raw1(new Data(34,1,3,5));			
-				raw1.dump_info();
-				ref_ptr<Data> raw2(raw1/*new Data(7,4,4,4)*/);
-				raw2.dump_info();
-				
-				//1?printf("jf"):0;
-				
-				if(raw2==raw1){
-				  dpmsg("raw1 is same as raw2");	
-						 }else{
-							dpmsg("raw1 isnt same ad raw2");
-				}
-}
