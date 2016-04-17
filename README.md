@@ -5,7 +5,7 @@ a kind of auto pointer which is based on reference count.Now it is finished and 
 ###declare ref-ptr<> variable.
    ref_ptr<typename T> variable_name(T*);
 it's so easy,you can able to create it directly,for example:
-'''C++
+'''cpp
 ref_ptr<int> pi1(new int(5));
 //create a local variable and initialised by pointer.
 
@@ -16,7 +16,7 @@ ref_ptr<int> pi3=pi1;
 //same as the former,but pointer which originally owned will be minus once;
 '''
 it also can declare a ref_ptt pointer.
-'''C++
+'''cpp
 ref_ptr<int>* pi1=new ref_ptr<int>(new int(0));
 
 auto pievil=&&&&&&pi1;//one who's write it must be fired(lol;
@@ -25,8 +25,8 @@ auto pievil=&&&&&&pi1;//one who's write it must be fired(lol;
 
 ###dereferencing
 there are two ways to derefencing ref_ptr and get the pointer what is it reference.
-'''c++
-ref_ptr<int> rp1(new int(4));
+'''cpp
+ref_ptr<int> rp1( new int(4));
 ref_ptr<char*> rp2(&("I'm so moe"));
 
 int* p11=**rp1;
