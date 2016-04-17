@@ -46,4 +46,51 @@ for(int i=0;i<10;i++){
   p22++;
 }
 ```
+###ref_ptr variables comparison
+ref_ptf support operator"=="and"!=" to compare about whether two ref_ptf is reference same ptr or not.For example:
+```cpp
+ref_ptr<int> rp1(new int(48));
+auto rp2(rp1);
 
+ref_ptr<int> rp3=(new int(763));
+
+if(rp1==rp2)//always is true;
+
+if(rp3==rp2)//now is false;
+
+rp3=rp1;//rp3 changes reference and same as rp1's
+
+if(rp3==rp2)//now is true
+```
+
+###cross function
+Because ref_ptr is based on reference count,you dont worry about if you should delete ref_ptr(or be referenced ptr),or how to take those ref_ptr as function parameters.here is codes and it's so easy and directly:
+```cpp
+ref_ptr<long> srp(new long(7583947));
+
+void funcA(ref_ptr<long> rp){
+  //notice:rp is a formal parameter,in fact rp was new and reference count was add once;
+  ref_ptr<long> frp=rp;//or frp(rp);
+  if(frp==srp)//always is true;
+  ...
+}
+
+void funcB(ref_ptr<long> &rp){
+  //here rp is actual parameter so doesnt copy source ref_ptr.
+  ref_ptr<long> arp(rp);
+  if(arp==srp)//always is true
+}
+```
+
+
+##feature (´<_`)
+1、Trying to add more convenient grammer sugar;
+2、Trying to support multi-threads , switches and locks;
+3、Optimizing codes and struction.
+
+
+##in the end....  ε-(´∀｀; )
+I'm a newbie,that's not only mean programming but also English.so if you have found wrongs(codes or english grammer),please points them out and I would like to correct them.  _(:з」∠)_
+
+Thanks.
+.....Of course,and thank Google Translator. :D
